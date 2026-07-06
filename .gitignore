@@ -1,5 +1,2 @@
-"scripts":{
-"start: "node app.js",
-"dev" : "nodemon app.js",
-"seed": "node seed/seed.js"
-}
+node_modules/
+.env
