@@ -5,7 +5,11 @@ import AppError from "../middleware/AppError.js";
 
 export const addToCart = asyncHandler(async (req, res, next) => {
 
-    const { product, quantity } = req.body;
+   const { product, quantity } = req.body;
+
+    if (!quantity || quantity <= 0) {
+        return next(new AppError("Invalid quantity", 400));
+    }
 
     const foundProduct = await Product.findById(product);
 
@@ -53,12 +57,18 @@ export const addToCart = asyncHandler(async (req, res, next) => {
     });
 });
 
-export const getCart = asyncHandler(async (req, res) => {
+export const getCart = asyncHandler(async (req, res, next) => {
 
     const cart = await Cart.findOne().populate(
-        "items.product",
-        "name price"
-    );
+    "items.product",
+    "productName price"
+);
+
+
+    if (!cart) {
+        return next(new AppError("Cart not found", 404));
+    }
+
 
     res.status(200).json({
         status: "success",
@@ -78,6 +88,10 @@ export const updateCartItem = asyncHandler(async (req, res, next) => {
 
     if (!item) {
         return next(new AppError("Item not found", 404));
+    }
+
+    if (!req.body.quantity || req.body.quantity <= 0) {
+        return next(new AppError("Invalid quantity", 400));
     }
 
     item.quantity = req.body.quantity;

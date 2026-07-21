@@ -1,3 +1,4 @@
+import Order from "../models/order.js";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import connectDB from "../config/config.js";
@@ -10,6 +11,7 @@ const seedData = async () => {
     try {
         await connectDB();
 
+        await Order.deleteMany();
         await Product.deleteMany();
         await Category.deleteMany();
 

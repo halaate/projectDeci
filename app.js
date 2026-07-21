@@ -1,3 +1,4 @@
+import AppError from "./middleware/AppError.js";
 import express from "express";
 import dotenv from "dotenv";
 import mongoSanitize from "express-mongo-sanitize";
@@ -31,7 +32,7 @@ app.get("/", (req, res) => {
 const PORT = process.env.PORT || 3000;
 
 app.use((req, res, next) => {
-    next(new Error("Route not found", 404));
+    next(new AppError("Route not found", 404));
 });
 
 app.use(errorHandler);

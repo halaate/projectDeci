@@ -20,6 +20,14 @@ This project is an E-Commerce REST API built using Node.js, Express.js, MongoDB,
 - MongoDB
 - Mongoose
 
+
+## Prerequisites
+
+- Node.js
+- npm
+- MongoDB (Local or MongoDB Atlas)
+
+
 ## Installation
 
 Clone the repository:
@@ -55,11 +63,10 @@ npm run dev
 
 ## Environment Variables
 
-| Variable | Description |
-|----------|-------------|
-| MONGO_URI | MongoDB connection string |
-| PORT | Server port |
-
+| Variable | Description | Example |
+|----------|-------------|---------|
+| MONGO_URI | MongoDB connection string | mongodb://localhost:27017/project |
+| PORT | Server port | 3000 |
 ## API Endpoints
 
 ### Categories
@@ -115,3 +122,6 @@ app.js
 package.json
 README.md
 ```
+
+
+Project completed successfully.
