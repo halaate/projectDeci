@@ -9,7 +9,7 @@ import {
 
 const router = express.Router();
 
-router.post("/", addToCart);
+router.post("/add", addToCart);
 
 router.get("/", getCart);
 

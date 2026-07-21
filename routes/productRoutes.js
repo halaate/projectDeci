@@ -18,6 +18,7 @@ router
 router
     .route("/:id")
     .get(getProduct)
+    .patch(updateProduct)
     .put(updateProduct)
     .delete(deleteProduct);
 

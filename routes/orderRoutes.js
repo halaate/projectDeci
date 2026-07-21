@@ -16,4 +16,14 @@ router.get("/:id", getOrder);
 
 router.patch("/:id", updateOrderStatus);
 
+router.put("/:id", updateOrderStatus);
+
+router.delete("/:id", (req, res) => {
+    res.status(405).json({
+        status: "error",
+        message: "Deleting orders is not allowed"
+    });
+});
+
+
 export default router;
